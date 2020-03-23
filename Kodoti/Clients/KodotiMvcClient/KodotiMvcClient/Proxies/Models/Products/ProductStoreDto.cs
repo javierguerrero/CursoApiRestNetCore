@@ -1,8 +1,10 @@
-﻿using System;
+﻿using KodotiMvcClient.Proxies.Models.Stores;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Domain.Dto.Layer
+namespace KodotiMvcClient.Proxies.Models.Products
 {
     public class ProductStoreDto
     {

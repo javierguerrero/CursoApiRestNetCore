@@ -48,9 +48,11 @@ namespace Services.Layer
             var result = new ProductDto();
             try
             {
-                result = Mapper.Map<ProductDto>(
-                    await _context.Products.SingleAsync(x => x.ProductId == id)
-                );
+                var query = await _context.Products
+                                          .Include(x => x.ProductStores)
+                                            .ThenInclude(x => x.Store)
+                                          .SingleAsync(x => x.ProductId == id);
+                result = Mapper.Map<ProductDto>(query);
             }
             catch (Exception e)
             {

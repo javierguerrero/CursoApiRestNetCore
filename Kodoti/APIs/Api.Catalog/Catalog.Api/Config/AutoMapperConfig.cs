@@ -18,6 +18,9 @@ namespace Catalog.Api.Config
                 cfg.CreateMap<ProductCreateDto, Product>();
                 cfg.CreateMap<ProductUpdateDto, Product>();
                 cfg.CreateMap<DataCollection<ProductDto>, DataCollection<Product>>();
+
+                cfg.CreateMap<StoreDto, Store>();
+                cfg.CreateMap<ProductStoreDto, ProductStore>();
             });
         }
     }

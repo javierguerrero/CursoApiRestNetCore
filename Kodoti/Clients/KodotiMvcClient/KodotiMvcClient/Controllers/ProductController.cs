@@ -27,6 +27,18 @@ namespace KodotiMvcClient.Controllers
             return View(result);
         }
 
+        public async Task<IActionResult> Detail(int id)
+        {
+            var result = await _productProxy.Get(id);
+            return View(result);
+        }
+
+        public async Task<IActionResult> Stores(int id)
+        {
+            var result = await _storeProxy.GetAllByProductId(id);
+            return View(result);
+        }
+
         public async Task<IActionResult> Create()
         {
             ViewBag.Stores = await _storeProxy.Paged(1);

@@ -18,6 +18,7 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>¿Habilitado?</th>
+            <th style="width:140px;"></th>
         </tr>
     </thead>
     <tbody>
@@ -25,11 +26,16 @@
         {
             @foreach (var item in Model.Items)
             {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@(item.IsEnabled ? "Si" : "No")</td>
-                </tr>
+            <tr>
+                <td>
+                    <a href="~/product/detail/@item.ProductId">@item.Name</a>
+                </td>
+                <td>@item.Description</td>
+                <td>@(item.IsEnabled ? "Si" : "No")</td>
+                <td class="text-center">
+                    <a href="~/product/stores/@item.ProductId">Ver tiendas</a>
+                </td>
+            </tr>
             }
         }
     </tbody>

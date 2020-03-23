@@ -11,8 +11,8 @@ namespace KodotiMvcClient.Proxies
     public interface IProductProxy
     {
         Task<DataCollection<ProductDto>> Paged(int page);
-
         Task Create(ProductCreateDto model, ModelStateDictionary modelState);
+        Task<ProductDto> Get(int id);
     }
 
     public class ProductProxy : IProductProxy
@@ -22,6 +22,16 @@ namespace KodotiMvcClient.Proxies
         public ProductProxy(ProxyHttpClient proxyHttpClient)
         {
             _proxyHttpClient = proxyHttpClient;
+        }
+
+        public async Task<ProductDto> Get(int id)
+        {
+            var client = _proxyHttpClient.Get(ProxyHttpClient.CatalogAPI);
+            var response = await client.GetAsync($"products/v1/{id}");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsAsync<ProductDto>();
         }
 
         public async Task<DataCollection<ProductDto>> Paged(int page)

@@ -6,6 +6,5 @@ namespace Domain.Dto.Layer
     {
         public int StoreId { get; set; }
         public string Name { get; set; }
-        public List<ProductStoreDto> ProductStores { get; set; }
     }
 }
